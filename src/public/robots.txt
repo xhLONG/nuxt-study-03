@@ -1,0 +1,7 @@
+User-Agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-content/plugins/
+
+Sitemap: https://yourdomain.com/sitemap_index.xml

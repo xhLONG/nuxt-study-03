@@ -1,0 +1,6 @@
+{
+  "vue.features.codeActions": true,
+  "vue.features.codeLens": true,
+  "vue.features.documentHighlight": true,
+  "vue.features.documentSymbol": true
+}

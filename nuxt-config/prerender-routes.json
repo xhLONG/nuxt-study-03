@@ -1,0 +1,41 @@
+{
+  "/about": {
+    "prerender": true
+  },
+  "/careers": {
+    "prerender": true
+  },
+  "/contact": {
+    "prerender": true
+  },
+  "/faq": {
+    "prerender": true
+  },
+  "/partnership": {
+    "prerender": true
+  },
+  "/privacy-policy": {
+    "prerender": true
+  },
+  "/profile": {
+    "prerender": true
+  },
+  "/terms-of-service": {
+    "prerender": true
+  },
+  "/testimonials": {
+    "prerender": true
+  },
+  "/news/私交混乱陪睡上位，拍一部戏换一个伴侣，真浪-16": {
+    "prerender": true
+  },
+  "/news/2天4个瓜，曝输光42亿、婚内偷腥、叔圈天菜翻车，-14": {
+    "prerender": true
+  },
+  "/news/红大爷-事件：伪装背后的惊人真相-12": {
+    "prerender": true
+  },
+  "/news/hello-world-1": {
+    "prerender": true
+  }
+}
