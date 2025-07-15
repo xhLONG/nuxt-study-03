@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "Selamat datang ke laman web saya",
+    "description": "Ini adalah aplikasi Nuxt 3 yang menyokong pelbagai bahasa."
+  },
+  "base": {
+    "siteName": "Laman Utama",
+    "home": "Laman Utama",
+    "about": "Tentang Kami",
+    "profile": "Profil",
+    "privacy": "Dasar Privasi",
+    "services": "Perkhidmatan",
+    "contact": "Hubungi Kami",
+    "news": "Berita"
+  }
+}

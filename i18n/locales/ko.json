@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "내 사이트에 오신 것을 환영합니다",
+    "description": "이것은 다국어를 지원하는 Nuxt 3 애플리케이션입니다."
+  },
+  "base": {
+    "siteName": "홈",
+    "home": "홈",
+    "about": "회사 소개",
+    "profile": "프로필",
+    "privacy": "개인정보 처리방침",
+    "services": "서비스",
+    "contact": "문의하기",
+    "news": "뉴스"
+  }
+}

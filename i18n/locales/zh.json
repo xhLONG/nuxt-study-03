@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "欢迎来到我的网站",
+    "description": "这是一个支持多语言的 Nuxt 3 应用。"
+  },
+  "base": {
+    "siteName": "首页",
+    "home": "首页",
+    "about": "关于我们",
+    "profile": "个人资料",
+    "privacy": "隐私政策",
+    "services": "服务内容",
+    "contact": "联系我们",
+    "news": "新闻资讯"
+  }
+}

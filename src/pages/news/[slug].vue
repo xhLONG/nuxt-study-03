@@ -28,7 +28,7 @@ const title = news.value.title.rendered
 const description = news.value.excerpt.rendered.replace(/<\/?[^>]+>/g, '').slice(0, 150)
 const imgUrl = imgHandle(news.value.content.rendered)
 const url = `${runtimeConfig.public.domain}${route.path}`
-const article = { title, description, datePublished: news.value.date, dateModified: news.value.modified, url, excerpt: news.value.excerpt.rendered, imgUrl, author: news.value.author }
+const simpleArticle = { title, description, datePublished: news.value.date, dateModified: news.value.modified, url, excerpt: news.value.excerpt.rendered, imgUrl, author: news.value.author }
 const pageTdk = { title: title+' | '+runtimeConfig.public.globalTitle, description, keywords: '', imgUrl, url, datePublished: news.value.date, dateModified: news.value.modified }
 const breadcrumbList = [{
   name: 'Home',
@@ -54,13 +54,23 @@ useHead({
   htmlAttrs: {
     lang: 'en-US',
   },
-  script: [...useStructuredData({ excludeTypes: ['ContactPage'], article, pageTdk, faqList, breadcrumbList })],
+  script: [...useStructuredData({ excludeTypes: ['ContactPage'], article: simpleArticle, pageTdk, faqList, breadcrumbList })],
 })
 
 
 function newsHref(news) {
   return `/news/${news.slug}-${news.id}`
 }
+
+onMounted(() => {
+  // 接口有缓存，可能与实际情况有出入
+  useClientRequest(`/api/wp-cms/wp-json/custom/v1/increment-view`, {
+    method: 'post',
+    body: {
+      id
+    }
+  })
+})
 </script>
 
 <style lang="scss" scoped>

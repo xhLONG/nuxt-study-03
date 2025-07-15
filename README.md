@@ -74,7 +74,7 @@ bun run preview
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
-支持：原子css、css预处理器、ui库element、接口请求、路由中间件、页面缓存、ssr+ssg、自动生成静态路由、nitro后端接口转发、sitemap站点地图、图片懒加载、tdk结构化数据
+支持：原子css、css预处理器、ui库element、接口请求、路由中间件、页面缓存、ssr+ssg、自动生成静态路由、nitro后端接口转发、sitemap站点地图、图片懒加载、tdk结构化数据、多语言
 
 
 node v18.20.0
@@ -137,3 +137,6 @@ wordpress 安装插件 Redis Object Cache
 
 过滤掉wordpress接口数据返回的端口号
 https://www.wapcar.my/tools 参考seo
+
+
+import { localeLangs } from '../../../nuxt-config/locale-langs.js'

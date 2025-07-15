@@ -2,6 +2,7 @@
 import { resolve } from 'path';
 import routeRules from './nuxt-config/prerender-routes.json'
 import { sitemap } from './nuxt-config/sitemap.js'
+import { localeLangs } from './nuxt-config/locale-langs.js'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
@@ -13,15 +14,9 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'nuxt study 02',
-      htmlAttrs: {
-        lang: 'en',
-      },
       charset: 'utf-16',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
-        { name: 'description', content: 'a study nuxt demo project' },
-        { name: 'keywords', content: '抖音,tiktok,download' },
         { name: 'robots', content: 'index, follow' }
       ],
     },
@@ -31,7 +26,7 @@ export default defineNuxtConfig({
   experimental: {
     inlineSSRStyles: false
   },
-  css: ['@/assets/style/main.scss'],
+  css: ['@/assets/style/main.scss', 'flag-icons/css/flag-icons.min.css'],
   vite: {
     css: {
       preprocessorOptions: {
@@ -51,7 +46,14 @@ export default defineNuxtConfig({
   routeRules,
   sitemap,
   // sitemapName: 'sitemap', 多模块sitemap时，该属性不生效
-  modules: ['@nuxtjs/tailwindcss', '@element-plus/nuxt', '@pinia/nuxt', '@nuxtjs/sitemap', '@nuxt/image'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@element-plus/nuxt',
+    '@pinia/nuxt',
+    '@nuxtjs/sitemap',
+    '@nuxt/image',
+    '@nuxtjs/i18n'
+  ],
   runtimeConfig: {
     public: {
       apiBase: '',
@@ -64,6 +66,17 @@ export default defineNuxtConfig({
       instagramContact: process.env.INSTAGRAMCONTACT,
       email: process.env.EMAIL,
       gaId: process.env.GA_ID
+    }
+  },
+  i18n: {
+    locales: localeLangs,
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    lazy: true,
+    langDir: 'locales/',
+    detectBrowserLanguage: {
+      useCookie: true,
+      fallbackLocale: 'en'
     }
   },
   nitro: {

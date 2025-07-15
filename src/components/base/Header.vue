@@ -3,16 +3,19 @@
     <section class="container">
       <!-- Logo -->
       <div class="logo-wrap">
-        <NuxtLink to="/" class="logo-link">
+        <NuxtLinkLocale to="/" class="logo-link">
           <img src="@/assets/svgs/logo.svg" alt="Logo" />
           <span>{{ store.globalTitle }}</span>
-        </NuxtLink>
+        </NuxtLinkLocale>
       </div>
 
       <!-- Desktop nav -->
       <nav class="nav desktop-nav">
-        <NuxtLink v-for="nav in navLinks" :to="nav.href" :key="nav.label">{{ nav.label }}</NuxtLink>
+        <NuxtLinkLocale v-for="nav in navLinks" :to="nav.href" :key="nav.label">{{ $t(`base.${nav.label}`) }}</NuxtLinkLocale>
       </nav>
+
+      <!-- 切换语音按钮 -->
+      <BaseLanguageSwitcher></BaseLanguageSwitcher>
 
       <!-- Hamburger Button -->
       <button class="menu-toggle" @click="toggleMobileMenu">
@@ -25,7 +28,7 @@
     <!-- Mobile nav -->
     <transition name="fade-slide">
       <nav class="nav mobile-nav" v-show="mobileOpen">
-        <NuxtLink v-for="nav in navLinks" :to="nav.href" :key="nav.label" @click="closeMobile">{{ nav.label }}</NuxtLink>
+        <NuxtLinkLocale v-for="nav in navLinks" :to="nav.href" :key="nav.label" @click="closeMobile">{{ $t(`base.${nav.label}`) }}</NuxtLinkLocale>
       </nav>
     </transition>
   </header>
@@ -35,18 +38,18 @@
 import { ref } from 'vue'
 import { useIndexStore } from '@/stores/index'
 const store = useIndexStore()
-const route = useRoute()
+const { t } = useI18n()
 
 const mobileOpen = ref(false)
-const navLinks = [
-  {label:　'Home', routeName: 'home', href: '/'},
-  {label:　'About(ssg)', routeName: 'about', href: '/about'},
-  {label:　'Profile', routeName: 'profile', href: '/profile'},
-  {label:　'Privacy', routeName: 'privacy-policy', href: '/privacy-policy'},
-  {label:　'Services', routeName: 'terms-of-service', href: '/terms-of-service'},
-  {label:　'Contact', routeName: 'contact', href: '/contact'},
-  {label:　'News', routeName: 'news', href: '/news'},
-]
+const navLinks = ref([
+  {label:　'home', routeName: 'home', href: '/'},
+  {label:　'about', routeName: 'about', href: '/about'},
+  {label:　'profile', routeName: 'profile', href: '/profile'},
+  {label:　'privacy', routeName: 'privacy-policy', href: '/privacy-policy'},
+  {label:　'services', routeName: 'terms-of-service', href: '/terms-of-service'},
+  {label:　'contact', routeName: 'contact', href: '/contact'},
+  {label:　'news', routeName: 'news', href: '/news'},
+])
 
 function toggleMobileMenu() {
   mobileOpen.value = !mobileOpen.value

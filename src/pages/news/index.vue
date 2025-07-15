@@ -16,6 +16,13 @@
         </li>
       </ul>
     </BaseModuleSection>
+    <BaseModuleSection title="热门文章" :titleLevel="2">
+      <ul class="news-list">
+        <li v-for="item in hotArticleList" :key="item.id">
+          <NuxtLink :to="newsHref(item)">{{ item.title }}</NuxtLink>
+        </li>
+      </ul>
+    </BaseModuleSection>
     <BaseFaq :faqList="faqList"></BaseFaq>
     <div>
       <button @click="getArticleById(1)">获取资讯内容</button>
@@ -43,9 +50,11 @@ const getArticleList = useServerRequest("/api/wp-cms/wp-json/wp/v2/posts", {
   }
 })
 const getPage = useServerRequest("/api/wp-cms/wp-json/wp/v2/pages/9")
-const [{ data: articleList }, { data: pageData }] = await Promise.all([
+const getHotArticleList = useServerRequest("/api/wp-cms/wp-json/custom/v1/popular-posts")
+const [{ data: articleList }, { data: pageData }, { data: hotArticleList}] = await Promise.all([
   getArticleList,
-  getPage
+  getPage,
+  getHotArticleList
 ]);
 
 
