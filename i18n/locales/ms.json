@@ -4,6 +4,7 @@
     "description": "Ini adalah aplikasi Nuxt 3 yang menyokong pelbagai bahasa."
   },
   "base": {
+    "backHome": "BACK TO HOME",
     "siteName": "Laman Utama",
     "home": "Laman Utama",
     "about": "Tentang Kami",

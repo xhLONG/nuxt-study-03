@@ -4,6 +4,7 @@
     "description": "这是一个支持多语言的 Nuxt 3 应用。"
   },
   "base": {
+    "backHome": "返回首页",
     "siteName": "首页",
     "home": "首页",
     "about": "关于我们",

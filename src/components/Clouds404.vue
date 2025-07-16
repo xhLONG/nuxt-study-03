@@ -13,7 +13,7 @@
             <hr>
             <!-- <div class='_1'>THE PAGE</div> -->
             <div class='_2'>{{ message }}</div>
-            <NuxtLink to="/" class='btn'>BACK TO HOME</NuxtLink>
+            <NuxtLinkLocale to="/" class='btn'>{{ $t(`base.backHome`) }}</NuxtLinkLocale>
         </div>
     </div>
 </template>

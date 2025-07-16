@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path';
 import routeRules from './nuxt-config/prerender-routes.json'
-import { sitemap } from './nuxt-config/sitemap.js'
-import { localeLangs } from './nuxt-config/locale-langs.js'
+import { sitemap } from './nuxt-config/sitemap.env.js'
+import { i18nConfig } from './nuxt-config/i18n.env.js'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
@@ -68,17 +68,7 @@ export default defineNuxtConfig({
       gaId: process.env.GA_ID
     }
   },
-  i18n: {
-    locales: localeLangs,
-    defaultLocale: 'en',
-    strategy: 'prefix_except_default',
-    lazy: true,
-    langDir: 'locales/',
-    detectBrowserLanguage: {
-      useCookie: true,
-      fallbackLocale: 'en'
-    }
-  },
+  i18n: i18nConfig,
   nitro: {
     prerender: {
       // routes: [], // 用于激活 `.output/server/prerender.mjs`

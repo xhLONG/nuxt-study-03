@@ -12,6 +12,9 @@ import { imgHandle } from '@/utils/tool';
 const { useServerRequest, useClientRequest } = useRequest();
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute()
+const { getNewsUrl, getHomeUrl } = usePageUrl()
+const { t } = useI18n()
+
 const id = route.params.slug.slice(route.params.slug.lastIndexOf('-')+1)
 console.log('-------->', id)
 
@@ -31,11 +34,11 @@ const url = `${runtimeConfig.public.domain}${route.path}`
 const simpleArticle = { title, description, datePublished: news.value.date, dateModified: news.value.modified, url, excerpt: news.value.excerpt.rendered, imgUrl, author: news.value.author }
 const pageTdk = { title: title+' | '+runtimeConfig.public.globalTitle, description, keywords: '', imgUrl, url, datePublished: news.value.date, dateModified: news.value.modified }
 const breadcrumbList = [{
-  name: 'Home',
-  url: '/',
+  name: t('base.home'),
+  url: getHomeUrl(),
 }, {
-  name: 'News',
-  url: '/news',
+  name: t('base.news'),
+  url: getNewsUrl(),
 }, {
   name: title,
   url

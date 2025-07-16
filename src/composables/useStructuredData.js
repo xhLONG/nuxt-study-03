@@ -24,8 +24,8 @@ export function useStructuredData(data) {
         "description": `${pageTdk.description}`,
         "@id": `${pageTdk.url}`,
         "url": `${pageTdk.url}`,
-        "datePublished": `${pageTdk.datePublished}`,
-        "dateModified": `${pageTdk.dateModified}`,
+        "datePublished": `${pageTdk.datePublished || new Date().toISOString()}`,
+        "dateModified": `${pageTdk.dateModified || new Date().toISOString()}`,
         "inLanguage": `${pageTdk.lang || 'en-US'}`
       })
     },
@@ -53,8 +53,8 @@ export function useStructuredData(data) {
         "abstract": `${article.excerpt?.replace(/<\/?[^>]+>/g, '').slice(0, 200)}`,
         "articleBody": `${article.excerpt?.replace(/<\/?[^>]+>/g, '')}`,
         "mainEntityOfPage": `${pageTdk.url}`,
-        "datePublished": `${article.datePublished}`,
-        "dateModified": `${article.dateModified}`,
+        "datePublished": `${article.datePublished || new Date().toISOString()}`,
+        "dateModified": `${article.dateModified || new Date().toISOString()}`,
         "author": {
           "@type": "Person",
           "name": `${article.author}`

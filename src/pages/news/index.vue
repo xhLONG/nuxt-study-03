@@ -5,21 +5,21 @@
     <BaseModuleSection title="文章列表1" :titleLevel="2">
       <ul class="news-list">
         <li v-for="item in articleList" :key="item.id">
-          <NuxtLink :to="newsHref(item)">{{ item.title.rendered }}</NuxtLink>
+          <NuxtLinkLocale :to="{ name: 'news-slug', params: { slug: `${item.slug}-${item.id}` } }">{{ item.title.rendered }}</NuxtLinkLocale>
         </li>
       </ul>
     </BaseModuleSection>
     <BaseModuleSection title="文章列表2" :titleLevel="2">
       <ul class="news-list">
         <li v-for="item in articleList" :key="item.id">
-          <NuxtLink :to="newsHref(item)">{{ item.title.rendered }}</NuxtLink>
+          <NuxtLink :to="getArticleUrl(item)">{{ item.title.rendered }}</NuxtLink>
         </li>
       </ul>
     </BaseModuleSection>
     <BaseModuleSection title="热门文章" :titleLevel="2">
       <ul class="news-list">
         <li v-for="item in hotArticleList" :key="item.id">
-          <NuxtLink :to="newsHref(item)">{{ item.title }}</NuxtLink>
+          <NuxtLink :to="getArticleUrl(item)">{{ item.title }}</NuxtLink>
         </li>
       </ul>
     </BaseModuleSection>
@@ -37,6 +37,8 @@ const { trackEvent } = useGa4()
 const { useServerRequest, useClientRequest } = useRequest();
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute()
+const { getArticleUrl, getHomeUrl } = usePageUrl()
+const { t } = useI18n()
 
 
 // 服务端渲染时会发起请求，初始化页面数据
@@ -49,24 +51,23 @@ const getArticleList = useServerRequest("/api/wp-cms/wp-json/wp/v2/posts", {
     }))
   }
 })
-const getPage = useServerRequest("/api/wp-cms/wp-json/wp/v2/pages/9")
+// const getPage = useServerRequest("/api/wp-cms/wp-json/wp/v2/pages/9")
 const getHotArticleList = useServerRequest("/api/wp-cms/wp-json/custom/v1/popular-posts")
-const [{ data: articleList }, { data: pageData }, { data: hotArticleList}] = await Promise.all([
+const [{ data: articleList }, { data: hotArticleList}] = await Promise.all([
   getArticleList,
-  getPage,
   getHotArticleList
 ]);
 
 
 // 设置tdk
-const { title, description } = pageData.value.yoast_head_json
+const { title, description } = {}
 const url = `${runtimeConfig.public.domain}${route.path}`
-const pageTdk = { title, description, keywords: '', imgUrl: '', url, datePublished: pageData.value.date, dateModified: pageData.value.modified }
+const pageTdk = { title, description, keywords: '', imgUrl: '', url, datePublished: '', dateModified: '' }
 const breadcrumbList = [{
-  name: 'Home',
-  url: '/',
+  name: t('base.home'),
+  url: getHomeUrl(),
 }, {
-  name: 'News',
+  name: t('base.news'),
   url,
 }]
 const faqList = [{
@@ -98,6 +99,7 @@ async function getArticleById(id) {
 function newsHref(news) {
   return `/news/${news.slug}-${news.id}`
 }
+
 </script>
 
 <style lang="scss" scoped>

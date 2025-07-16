@@ -39,15 +39,15 @@ const [{ data: findResult }, { data: articleList }] = await Promise.all([
 
 
 // 设置tdk
-// const { title, description } = pageData.value.yoast_head_json
-// const url = `${runtimeConfig.public.domain}${route.path}`
-// const pageTdk = { title, description, keywords: '', imgUrl: '', url, datePublished: pageData.value.date, dateModified: pageData.value.modified }
-// useSeoMeta({
-//   ...useTdk(pageTdk)
-// })
-// useHead({
-//   script: [...useStructuredData({ excludeTypes: ['ContactPage'], pageTdk })],
-// })
+const { title, description } = {}
+const url = `${runtimeConfig.public.domain}${route.path}`
+const pageTdk = { title, description, keywords: '', imgUrl: '', url, datePublished: '', dateModified: '' }
+useSeoMeta({
+  ...useTdk(pageTdk)
+})
+useHead({
+  script: [...useStructuredData({ excludeTypes: ['ContactPage'], pageTdk })],
+})
 
 
 const douyinData = ref(null);

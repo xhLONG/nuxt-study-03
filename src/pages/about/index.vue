@@ -21,8 +21,6 @@
 const { useServerRequest, useClientRequest } = useRequest();
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
-const { sayHello } = useUtils()
-sayHello()
 
 const { $sayHi } = useNuxtApp()
 console.log($sayHi('lily'))
@@ -36,17 +34,17 @@ console.log('----> articles', toRaw(articles.value))
 
 const { data: counts } = useAsyncData('articleCounter', () => $fetch('/api/article/count'))
 // 服务端渲染时会发起请求，初始化页面数据
-const getPage = useServerRequest("/api/wp-cms/wp-json/wp/v2/pages/49");
-const [{ data: pageData }] = await Promise.all([
-  getPage
-]);
+// const getPage = useServerRequest("/api/wp-cms/wp-json/wp/v2/pages/49");
+// const [{ data: pageData }] = await Promise.all([
+//   getPage
+// ]);
 
 
 // 设置tdk
-const {title, description} = pageData.value.yoast_head_json
+const {title, description} = {}
 const imgUrl = ''
 const url = `${runtimeConfig.public.domain}${route.path}`;
-const pageTdk = { title, description, keywords: '', imgUrl, url, datePublished: pageData.value.date, dateModified: pageData.value.modified };
+const pageTdk = { title, description, keywords: '', imgUrl, url,};
 useSeoMeta({
   ...useTdk(pageTdk)
 })

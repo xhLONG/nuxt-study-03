@@ -4,6 +4,7 @@
     "description": "This is an internationalized Nuxt 3 application."
   },
   "base": {
+    "backHome": "BACK TO HOME",
     "siteName": "Home",
     "home": "Home",
     "about": "About",

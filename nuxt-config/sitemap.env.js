@@ -7,6 +7,9 @@ const sitemap = {
   xsl: false,
   xslTips: import.meta.dev,
   debug: import.meta.dev,
+  autoI18n: true,
+  i18n: true,
+  hostname: process.env.DOMAIN,
   xslColumns: [
     // URL column must always be set, no value needed
     { label: 'URL', width: '50%' },
@@ -19,21 +22,12 @@ const sitemap = {
     pages: {
       // extend the nuxt:pages app source
       includeAppSources: true,
-      exclude: [
-        '/news/**',
-        '!/news'
-      ],
+      exclude: ['/news/**','!/news'],
       defaults: { priority: 1, changefreq: 'daily', lastmod: buildTime},
     },
     news: {
       sources: ['/api/sitemap/news'],
-      // urls() {
-      //   // resolved when the sitemap is shown
-      //   return ['/news/13213', '/bar']
-      // },
-      include: [
-        '/news/**',
-      ],
+      include: ['/news/**'],
       // example: give blog posts slightly higher priority (this is optional)
       defaults: { priority: 0.9, changefreq: 'hourly', lastmod: buildTime},
       chunks: true,

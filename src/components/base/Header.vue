@@ -11,7 +11,7 @@
 
       <!-- Desktop nav -->
       <nav class="nav desktop-nav">
-        <NuxtLinkLocale v-for="nav in navLinks" :to="nav.href" :key="nav.label">{{ $t(`base.${nav.label}`) }}</NuxtLinkLocale>
+        <NuxtLinkLocale v-for="nav in navLinks" :to="nav.routeName" :key="nav.label">{{ $t(`base.${nav.label}`) }}</NuxtLinkLocale>
       </nav>
 
       <!-- 切换语音按钮 -->
@@ -28,7 +28,7 @@
     <!-- Mobile nav -->
     <transition name="fade-slide">
       <nav class="nav mobile-nav" v-show="mobileOpen">
-        <NuxtLinkLocale v-for="nav in navLinks" :to="nav.href" :key="nav.label" @click="closeMobile">{{ $t(`base.${nav.label}`) }}</NuxtLinkLocale>
+        <NuxtLinkLocale v-for="nav in navLinks" :to="nav.routeName" :key="nav.label" @click="closeMobile">{{ $t(`base.${nav.label}`) }}</NuxtLinkLocale>
       </nav>
     </transition>
   </header>
@@ -42,11 +42,11 @@ const { t } = useI18n()
 
 const mobileOpen = ref(false)
 const navLinks = ref([
-  {label:　'home', routeName: 'home', href: '/'},
+  {label:　'home', routeName: '/', href: '/'},
   {label:　'about', routeName: 'about', href: '/about'},
   {label:　'profile', routeName: 'profile', href: '/profile'},
-  {label:　'privacy', routeName: 'privacy-policy', href: '/privacy-policy'},
-  {label:　'services', routeName: 'terms-of-service', href: '/terms-of-service'},
+  {label:　'privacy', routeName: 'privacy', href: '/privacy'},
+  {label:　'services', routeName: 'service', href: '/service'},
   {label:　'contact', routeName: 'contact', href: '/contact'},
   {label:　'news', routeName: 'news', href: '/news'},
 ])

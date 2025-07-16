@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "generate:routes": "node scripts/generate-prerender-routes.cjs",
+    "generate:routes": "node scripts/generate-prerender-routes.js",
     "build": "nuxt build && node scripts/copy-output.cjs",
     "generate": "nuxt generate && node scripts/copy-dist.cjs",
     "gen:page": "node scripts/prerender-pages.js",

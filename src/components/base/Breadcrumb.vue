@@ -56,6 +56,7 @@ const isLast = (index) => index === props.items.length - 1
   color: #1A3760;
   text-decoration: none;
   transition: color 0.2s;
+  cursor: pointer;
 }
 
 .breadcrumb-link:hover {
