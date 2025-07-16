@@ -3,11 +3,11 @@
     <section class="footer-container">
       <!-- Logo & About -->
       <div class="footer-brand">
-        <NuxtLink to="/">
+        <NuxtLinkLocale to="/">
           <img src="@/assets/svgs/logo.svg" class="logo" alt="Logo" />
-        </NuxtLink>
+        </NuxtLinkLocale>
         <p class="description">
-          {{ store.globalTitle }} 是一个现代化响应式 Nuxt 网站，为您提供专业可靠的服务体验。
+          {{ store.globalTitle }} {{ $t("footer.description") }}
         </p>
 
         <!-- 社交媒体图标 -->
@@ -27,34 +27,34 @@
       <!-- Footer Links -->
       <div class="footer-links">
         <div class="column">
-          <h2>关于我们</h2>
+          <h2>{{ $t('footer.aboutUs') }}</h2>
           <ul>
-            <li><NuxtLink to="/about">公司简介</NuxtLink></li>
-            <li><NuxtLink to="/team">团队成员</NuxtLink></li>
-            <li><NuxtLink to="/careers">加入我们</NuxtLink></li>
+            <li><NuxtLinkLocale to="about">{{ $t('footer.companyDes') }}</NuxtLinkLocale></li>
+            <li><NuxtLinkLocale to="/">{{ $t('footer.team') }}</NuxtLinkLocale></li>
+            <li><NuxtLinkLocale to="careers">{{ $t('footer.joinUs') }}</NuxtLinkLocale></li>
           </ul>
         </div>
         <div class="column">
-          <h2>服务</h2>
+          <h2>{{ $t('footer.service') }}</h2>
           <ul>
-            <li><NuxtLink to="/services/web">Web 开发</NuxtLink></li>
-            <li><NuxtLink to="/services/app">App 开发</NuxtLink></li>
-            <li><NuxtLink to="/pricing">价格方案</NuxtLink></li>
+            <li><NuxtLinkLocale to="service">Web 开发</NuxtLinkLocale></li>
+            <li><NuxtLinkLocale to="service">App 开发</NuxtLinkLocale></li>
+            <li><NuxtLinkLocale to="service">价格方案</NuxtLinkLocale></li>
           </ul>
         </div>
         <div class="column">
-          <h2>支持</h2>
+          <h2>{{ $t('footer.support') }}</h2>
           <ul>
-            <li><NuxtLink to="/contact">联系我们</NuxtLink></li>
-            <li><NuxtLink to="/faq">常见问题</NuxtLink></li>
-            <li><NuxtLink to="/privacy-policy">隐私政策</NuxtLink></li>
+            <li><NuxtLinkLocale to="contact">{{ $t('footer.contactUs') }}</NuxtLinkLocale></li>
+            <li><NuxtLinkLocale to="faq">{{ $t('footer.faq') }}</NuxtLinkLocale></li>
+            <li><NuxtLinkLocale to="privacy">{{ $t('footer.privacyPolicy') }}</NuxtLinkLocale></li>
           </ul>
         </div>
       </div>
     </section>
 
     <section class="footer-bottom">
-      <p>© 2025 {{ store.globalTitle }} 版权所有</p>
+      <p>© 2025 {{ store.globalTitle }} {{ $t('footer.allRights') }}</p>
     </section>
   </footer>
 </template>

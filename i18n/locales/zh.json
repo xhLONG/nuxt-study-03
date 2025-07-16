@@ -13,5 +13,18 @@
     "services": "服务内容",
     "contact": "联系我们",
     "news": "新闻资讯"
+  },
+  "footer": {
+    "description": "是一个现代化响应式 Nuxt 网站，为您提供专业可靠的服务体验。",
+    "aboutUs": "关于我们",
+    "companyDes": "公司简介",
+    "team": "团队成员",
+    "joinUs": "加入我们",
+    "service": "服务",
+    "support": "支持",
+    "contactUs": "联系我们",
+    "faq": "常见问题",
+    "privacyPolicy": "隐私政策",
+    "allRights": "版权所有"
   }
 }

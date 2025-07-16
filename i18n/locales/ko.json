@@ -13,5 +13,19 @@
     "services": "서비스",
     "contact": "문의하기",
     "news": "뉴스"
+  },
+  "footer": {
+    "description": "전문적이고 신뢰할 수 있는 서비스를 제공하는 현대적인 반응형 Nuxt 웹사이트입니다.",
+    "aboutUs": "회사 소개",
+    "companyDes": "회사 개요",
+    "team": "팀 소개",
+    "joinUs": "채용 정보",
+    "service": "서비스",
+    "support": "지원",
+    "contactUs": "문의하기",
+    "faq": "자주 묻는 질문",
+    "privacyPolicy": "개인정보 처리방침",
+    "allRights": "모든 권리 보유"
   }
+
 }

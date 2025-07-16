@@ -22,7 +22,7 @@ const sitemap = {
     pages: {
       // extend the nuxt:pages app source
       includeAppSources: true,
-      exclude: ['/news/**','!/news'],
+      exclude: ['/news/**','!/news','/zixun/**','/berita/**','/saeob/**'],
       defaults: { priority: 1, changefreq: 'daily', lastmod: buildTime},
     },
     news: {

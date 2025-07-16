@@ -13,5 +13,19 @@
     "services": "Perkhidmatan",
     "contact": "Hubungi Kami",
     "news": "Berita"
+  },
+  "footer": {
+    "description": "Laman web Nuxt yang moden dan responsif, menawarkan pengalaman perkhidmatan yang profesional dan boleh dipercayai.",
+    "aboutUs": "Tentang Kami",
+    "companyDes": "Profil Syarikat",
+    "team": "Pasukan Kami",
+    "joinUs": "Sertai Kami",
+    "service": "Perkhidmatan",
+    "support": "Sokongan",
+    "contactUs": "Hubungi Kami",
+    "faq": "Soalan Lazim",
+    "privacyPolicy": "Dasar Privasi",
+    "allRights": "Hak cipta terpelihara"
   }
+
 }

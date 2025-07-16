@@ -16,7 +16,7 @@ const i18nConfig = {
     fallbackLocale: 'en'
   },
   customRoutes: 'config', // disable custom route with page components
-  // 重写路由名称 路径要写ASCII字符，不然会被双重解码导致404，需要静态化的路由也要写
+  // 重写路由名称 路径要写ASCII字符，不然会被双重解码导致404。需要静态化的路由也要改写。打包生成的sitemap会自动改写路径url。
   pages: {
     news: {
       en: '/news',
@@ -28,7 +28,7 @@ const i18nConfig = {
       en: '/news/[slug]',
       zh: '/zixun/[slug]',
       ms: '/berita/[slug]',
-      ko: '/saeob/[slug]' // 'news' -> '사업' (saeob = business/news context)
+      ko: '/saeob/[slug]'
     },
     about: {
       en: '/about',

@@ -19,9 +19,6 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 useHead({
-  htmlAttrs: {
-    lang: 'zh',
-  },
   script: [ { innerHTML: 'console.log(\'Hello world\')' } ]
 })
 </script>

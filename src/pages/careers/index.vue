@@ -26,9 +26,6 @@ useSeoMeta({
   ...useTdk(pageTdk)
 })
 useHead({
-  htmlAttrs: {
-    lang: 'en-US',
-  },
   script: [...useStructuredData({ pageTdk })]
 })
 </script>

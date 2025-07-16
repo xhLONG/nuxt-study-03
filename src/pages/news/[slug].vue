@@ -54,9 +54,6 @@ useSeoMeta({
   ...useTdk(pageTdk)
 })
 useHead({
-  htmlAttrs: {
-    lang: 'en-US',
-  },
   script: [...useStructuredData({ excludeTypes: ['ContactPage'], article: simpleArticle, pageTdk, faqList, breadcrumbList })],
 })
 
