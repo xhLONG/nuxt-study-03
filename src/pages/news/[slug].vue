@@ -3,17 +3,18 @@
     <BaseBreadcrumb :items="breadcrumbList"></BaseBreadcrumb>
     <BaseTitle level="1">{{ news.title.rendered }}</BaseTitle>
     <article v-html="news.content.rendered"></article>
-    <BaseFaq :faqList="faqList"></BaseFaq>
+    <BaseFaq :title="t('base.faqs')" :faqList="faqList"></BaseFaq>
   </div>
 </template>
 
 <script setup>
 import { imgHandle } from '@/utils/tool';
+import { newsFaq } from '@/page-config/faq';
 const { useServerRequest, useClientRequest } = useRequest();
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute()
 const { getNewsUrl, getHomeUrl } = usePageUrl()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const id = route.params.slug.slice(route.params.slug.lastIndexOf('-')+1)
 console.log('-------->', id)
@@ -42,14 +43,9 @@ const breadcrumbList = [{
 }, {
   name: title,
   url
-}]
-const faqList = [{
-  question: '你们的产品支持哪些国家配送？',
-  answer: '我们支持全球配送，目前主要服务地区包括美国、加拿大、英国、澳大利亚和东南亚国家。'
-}, {
-  question: '如何申请退款？',
-  answer: '请在收到商品后的14天内，通过“我的订单”页面申请退款。商品需保持原包装且未使用。'
-}]
+  }]
+
+const faqList = newsFaq[locale.value] || []
 useSeoMeta({
   ...useTdk(pageTdk)
 })

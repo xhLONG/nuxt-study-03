@@ -12,7 +12,8 @@
     "privacy": "Dasar Privasi",
     "services": "Perkhidmatan",
     "contact": "Hubungi Kami",
-    "news": "Berita"
+    "news": "Berita",
+    "faqs": "Soalan Lazim"
   },
   "footer": {
     "description": "Laman web Nuxt yang moden dan responsif, menawarkan pengalaman perkhidmatan yang profesional dan boleh dipercayai.",

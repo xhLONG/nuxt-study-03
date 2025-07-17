@@ -11,9 +11,11 @@ export function usePageUrl() {
     const slug = `${news.slug}-${news.id}`
     return localePath({ name: 'news-slug', params: { slug } })
   }
+  // 资讯页的本地化链接
   function getNewsUrl() {
     return localePath({ name: 'news'})
   }
+  // 首页的本地化链接
   function getHomeUrl() {
     return localePath({ path: '/'})
   }

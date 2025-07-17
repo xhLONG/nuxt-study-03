@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { resolve } from 'path';
-import routeRules from './nuxt-config/prerender-routes.json'
-import { sitemap } from './nuxt-config/sitemap.env.js'
-import { i18nConfig } from './nuxt-config/i18n.env.js'
+import routeRules from './src/nuxt-config/prerender-routes.json'
+import { sitemap } from './src/nuxt-config/sitemap.config.js'
+import { i18nConfig } from './src/nuxt-config/i18n.config.js'
+
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',

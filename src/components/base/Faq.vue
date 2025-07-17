@@ -1,5 +1,5 @@
 <template>
-  <BaseModuleSection :title="title" :titleLevel="2" class="faq">
+  <BaseModuleSection :title="title" :titleLevel="2" class="faq" v-if="faqList.length">
     <div class="faq-collapse">
       <el-collapse v-model="activeName" accordion>
         <el-collapse-item :title="faq.question" :name="idx+1" v-for="(faq, idx) in faqList" :key="faq.question">

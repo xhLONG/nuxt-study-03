@@ -12,13 +12,13 @@
 
         <!-- 社交媒体图标 -->
         <div class="social-icons">
-          <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook" title="Facebook" rel="external">
             <img src="@/assets/svgs/social/facebook.svg" alt="facebook" />
           </a>
-          <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <a href="https://twitter.com" target="_blank" aria-label="Twitter" title="Twitter" rel="external">
             <img src="@/assets/svgs/social/twitter.svg" alt="twitter" />
           </a>
-          <a href="https://github.com" target="_blank" aria-label="GitHub">
+          <a href="https://github.com" target="_blank" aria-label="GitHub" title="GitHub" rel="external">
             <img src="@/assets/svgs/social/gitHub.svg" alt="gitHub" />
           </a>
         </div>

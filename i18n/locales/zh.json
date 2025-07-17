@@ -12,7 +12,8 @@
     "privacy": "隐私政策",
     "services": "服务内容",
     "contact": "联系我们",
-    "news": "新闻资讯"
+    "news": "新闻资讯",
+    "faqs": "常见问题解答"
   },
   "footer": {
     "description": "是一个现代化响应式 Nuxt 网站，为您提供专业可靠的服务体验。",

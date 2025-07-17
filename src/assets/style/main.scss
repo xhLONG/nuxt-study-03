@@ -1,9 +1,15 @@
 @use './responsive.scss';
 
+html {
+  font-family: $roboto;
+}
+html[lang='zh-CN'] {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+}
+
 body{
   color: $title-color;
   font-size: $font-size;
-  font-family: $roboto;
 }
 .page{
   min-height: 1000px;

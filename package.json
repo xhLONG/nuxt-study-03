@@ -4,10 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
-    "generate:routes": "node scripts/generate-prerender-routes.js",
-    "build": "nuxt build && node scripts/copy-output.cjs",
-    "generate": "nuxt generate && node scripts/copy-dist.cjs",
-    "gen:page": "node scripts/prerender-pages.js",
+    "generate:routes": "node src/scripts/generate-prerender-routes.js",
+    "build": "nuxt build && node src/scripts/copy-output.cjs",
+    "generate": "nuxt generate && node src/scripts/copy-dist.cjs",
+    "gen:page": "node src/scripts/prerender-pages.js",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

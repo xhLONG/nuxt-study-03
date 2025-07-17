@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import path from 'path'
 import axios from 'axios'
 import { fileURLToPath } from 'url'
-import { localeLangs, i18nConfig } from '../nuxt-config/i18n.env.js'
+import { localeLangs, i18nConfig } from '../nuxt-config/i18n.config.js'
 
 // __dirname 兼容处理（ESM 中没有默认的 __dirname）
 const __filename = fileURLToPath(import.meta.url)

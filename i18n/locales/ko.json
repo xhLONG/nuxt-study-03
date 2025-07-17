@@ -12,7 +12,8 @@
     "privacy": "개인정보 처리방침",
     "services": "서비스",
     "contact": "문의하기",
-    "news": "뉴스"
+    "news": "뉴스",
+    "faqs": "자주 묻는 질문"
   },
   "footer": {
     "description": "전문적이고 신뢰할 수 있는 서비스를 제공하는 현대적인 반응형 Nuxt 웹사이트입니다.",

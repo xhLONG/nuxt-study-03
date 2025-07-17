@@ -1,30 +1,46 @@
 // /api/sitemap/news
 // 获取资讯列表url地址做sitemap
 import { decodeString } from '@/utils/tool';
+import { localeLangs, i18nConfig } from '~/nuxt-config/i18n.config.js';
 
-function newsHref(news) {
-  return `/news/${decodeString(news.slug)}-${news.id}`
+function newsHref(news, lang) {
+  const prefix = lang === 'en' ? i18nConfig.pages.news[lang] : `/${lang}${i18nConfig.pages.news[lang]}`
+  return `${prefix}/${decodeString(news.slug)}-${news.id}`
 }
-const locale = 'en'
-const locales = ['en', 'zh', 'ko']
 
+// 设置_i18nTransform:true后会为该条链接生成对应语言的链接并加上语言前缀
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
   const baseURL = config.public.wpApiBase
-  const result = await serverRequest('/wp-json/wp/v2/posts', {
+  const newsList = await serverRequest('/wp-json/wp/v2/posts', {
     baseURL
   })
-  return result.map(item => ({
-    loc: newsHref(item),
-    _i18nTransform: true,
-    lastmod: item.updatedAt
-  }))
+
+  // 英语资讯
+  const enNewsUrl = newsList.map(news => {
+    return {
+      loc: newsHref(news, 'en')
+    }
+  })
+  // 中文资讯
+  const zhNewsUrl = newsList.map(news => {
+    return {
+      loc: newsHref(news, 'zh')
+    }
+  })
+  // 马来资讯
+  const msNewsUrl = newsList.map(news => {
+    return {
+      loc: newsHref(news, 'ms')
+    }
+  })
+  // 韩语资讯
+  const koNewsUrl = newsList.map(news => {
+    return {
+      loc: newsHref(news, 'ko')
+    }
+  })
+
+  return [...enNewsUrl, ...zhNewsUrl, ...msNewsUrl, ...koNewsUrl]
 })
- // return result.map(item => newsHref(item))
-  // return result.map(item => ({
-  //     url: `/${locale}${newsHref(item)}`,
-  //     links: locales.map((altLocale) => ({
-  //       lang: altLocale,
-  //       url: `/${altLocale}${newsHref(item)}`
-  //     }))
-  // }))
+

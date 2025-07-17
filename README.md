@@ -139,4 +139,4 @@ wordpress 安装插件 Redis Object Cache
 https://www.wapcar.my/tools 参考seo
 
 
-import { localeLangs } from '../../../nuxt-config/locale-langs.js'
+

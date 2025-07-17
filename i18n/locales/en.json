@@ -12,7 +12,8 @@
     "privacy": "Privacy",
     "services": "Services",
     "contact": "Contact",
-    "news": "News"
+    "news": "News",
+    "faqs": "Faqs"
   },
   "footer": {
     "description": "A modern, responsive Nuxt website offering you a professional and reliable service experience.",

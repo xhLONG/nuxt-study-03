@@ -4,7 +4,7 @@
 const buildTime = new Date().toISOString()
 
 const sitemap = {
-  xsl: false,
+  xsl: import.meta.dev,
   xslTips: import.meta.dev,
   debug: import.meta.dev,
   autoI18n: true,
@@ -27,8 +27,6 @@ const sitemap = {
     },
     news: {
       sources: ['/api/sitemap/news'],
-      include: ['/news/**'],
-      // example: give blog posts slightly higher priority (this is optional)
       defaults: { priority: 0.9, changefreq: 'hourly', lastmod: buildTime},
       chunks: true,
       chunkSize: 2000, // Alternative way to specify chunk size
