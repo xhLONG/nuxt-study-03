@@ -19,10 +19,15 @@ export function usePageUrl() {
   function getHomeUrl() {
     return localePath({ path: '/'})
   }
+  // 联系页的本地化链接
+  function getContactUrl() {
+    return localePath({ path: 'contact'})
+  }
 
   return {
     getArticleUrl,
     getNewsUrl,
-    getHomeUrl
+    getHomeUrl,
+    getContactUrl
   }
 }

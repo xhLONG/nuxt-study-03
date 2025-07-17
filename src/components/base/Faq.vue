@@ -34,6 +34,8 @@ const activeName = ref('1')
     font-size: 16px;
     color: $title-color;
     font-weight: 700;
+    min-height: 48px;
+    line-height: inherit;
   }
   .el-collapse-item__content{
     font-size: 14px;

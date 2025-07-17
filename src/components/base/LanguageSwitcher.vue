@@ -3,7 +3,7 @@
     <!-- 当前语言按钮 -->
     <button class="current-lang" @click="toggleDropdown">
       <span :class="`flag fi fi-${currentFlag}`"></span>
-      <span class="label">{{ currentLabel }}</span>
+      <span class="label">{{ currentLocale }}</span>
       <BaseIcon name="ArrowDown" customClass="arrow" :rotate="isOpen ? 180 : 0"></BaseIcon>
     </button>
 
@@ -22,17 +22,25 @@
 </template>
 
 <script setup>
+import { localeLangs } from "@/nuxt-config/i18n.config"
 const { locale, locales } = useI18n()
 const { clickOutside } = useUtils()
 const isOpen = ref(false)
 const languageSwitcher = ref(null)
 
-const localeMap = {
-  en: { label: 'English', flag: 'us' },
-  zh: { label: '中文', flag: 'cn' },
-  ko: { label: '한국어', flag: 'kr' },
-  ms: { label: 'Melayu', flag: 'my' },
-}
+// const localeMap = {
+//   en: { label: 'English', flag: 'us' },
+//   zh: { label: '中文', flag: 'cn' },
+//   ko: { label: '한국어', flag: 'kr' },
+//   ms: { label: 'Melayu', flag: 'my' },
+// }
+const localeMap = {}
+localeLangs.forEach(lang => {
+  localeMap[lang.code] = {
+    label: lang.name,
+    flag: lang.flag
+  }
+})
 
 const currentLocale = computed(() => locale.value)
 const currentLabel = computed(() => localeMap[currentLocale.value]?.label || currentLocale.value)
@@ -71,7 +79,7 @@ clickOutside(languageSwitcher, () => {
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 6px 10px;
-    width: 126px;
+    width: 96px;
     height: 36px;
     cursor: pointer;
     display: flex;
@@ -115,6 +123,9 @@ clickOutside(languageSwitcher, () => {
       height: 50px;
       border-bottom: 1px solid #ececec;
       color: rgba(102, 102, 102, 0.85);
+      .flag{
+        flex-shrink: 0;
+      }
     }
   }
 

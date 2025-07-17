@@ -8,6 +8,7 @@
 const { useServerRequest, useClientRequest } = useRequest();
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
+const { t, locale } = useI18n()
 
 
 // 服务端渲染时会发起请求，初始化页面数据

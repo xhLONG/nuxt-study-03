@@ -1,8 +1,8 @@
 const localeLangs = [
-  { "code": "en", "iso": "en-US", "name": "English", "file": "en.json" },
-  { "code": "zh", "iso": "zh-CN", "name": "简体中文", "file": "zh.json" },
-  { "code": "ms", "iso": "ms-MY", "name": "Bahasa Malaysia", "file": "ms.json" },
-  { "code": "ko", "iso": "ko-KR", "name": "한국어", "file": "ko.json" }
+  { "code": "en", "iso": "en-US", "name": "English", "flag": "us", "file": "en.json" },
+  { "code": "zh", "iso": "zh-CN", "name": "简体中文", "flag": "cn", "file": "zh.json" },
+  { "code": "ms", "iso": "ms-MY", "name": "Bahasa Malaysia", "flag": "my", "file": "ms.json" },
+  { "code": "ko", "iso": "ko-KR", "name": "한국어", "flag": "kr", "file": "ko.json" }
 ]
 
 const i18nConfig = {
@@ -22,61 +22,66 @@ const i18nConfig = {
       en: '/news',
       zh: '/zixun',
       ms: '/berita',
-      ko: '/saeob' // 'news' -> '사업' (saeob = business/news context)
+      ko: '/news'
     },
     'news-slug': {
       en: '/news/[slug]',
       zh: '/zixun/[slug]',
       ms: '/berita/[slug]',
-      ko: '/saeob/[slug]'
+      ko: '/news/[slug]'
     },
     about: {
       en: '/about',
       zh: '/guanyu',
       ms: '/tentang',
-      ko: '/about' // 常用拼写
+      ko: '/about'
     },
+    // 招聘
     careers: {
       en: '/careers',
       zh: '/zhaopin',
       ms: '/kerjaya',
-      ko: '/goyong' // '고용' goyong = employment
+      ko: '/careers'
     },
     contact: {
       en: '/contact',
       zh: '/lianxi',
-      ms: '/hubungi',
-      ko: '/munui' // 문의 = inquiry
+      ms: '/contact',
+      ko: '/contact' // 문의 = inquiry
     },
+    // 商务合作
     partnership: {
       en: '/partnership',
       zh: '/hezuo',
       ms: '/kerjasama',
-      ko: '/hyeobryeok' // 협력 = cooperation
+      ko: '/partnership'
     },
+    // 隐私条款
     privacy: {
       en: '/privacy-policy',
       zh: '/yinsizhengce',
       ms: '/dasar-privasi',
-      ko: '/geuninsi' // 개인정보 처리방침 = personal info policy
+      ko: '/privacy-policy'
     },
     profile: {
       en: '/profile',
       zh: '/gerenziliao',
-      ms: '/profil',
-      ko: '/jeongbo' // 정보 = profile/info
+      ms: '/profile',
+      ko: '/profile'
     },
+    // 服务条款
     service: {
       en: '/terms-of-service',
       zh: '/fuwutiaokuan',
       ms: '/terma-perkhidmatan',
-      ko: '/yonghyeong-gwon' // 이용약관 = terms of use
+      ko: '/terms-of-service'
     },
+    // 用户评价
     testimonials: {
       en: '/testimonials',
       zh: '/yonghupingjia',
-      ms: '/testimoni',
-      ko: '/hyeonpyeong' // 사용자 평가 = 평가(pyeongga), 현평(hyeonpyeong)
+      ms: '/testimonials',
+      ko: '/testimonials'
     },
   }
 }
@@ -84,7 +89,7 @@ const i18nConfig = {
 
 /** d
  * 现在你是一名精通全球语言的翻译家
- * 这是我i18n重写路由名称的配置，对应国家的值是错误，现在需要你将路由翻译成当地国家语言的值，要符合ascii字符，例如中文可以翻译成对应的拼音，要有利于seo。
+ * 这是我i18n重写路由名称的配置，对应国家的值是错误，现在需要你将路由翻译成当地国家语言的值，要符合ascii字符，例如中文可以翻译成对应的拼音，如果没有合适的值可以用英语，要有利于seo。
   */
 
 export {

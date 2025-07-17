@@ -1,7 +1,8 @@
-
 // composables/useStructuredData.js
 export function useStructuredData(data) {
   const runtimeConfig = useRuntimeConfig()
+  const { locale, locales } = useI18n()
+  const { getHomeUrl,getContactUrl } = usePageUrl()
   const domain = runtimeConfig.public.domain
   const globalTitle = runtimeConfig.public.globalTitle
   const facebookContact = runtimeConfig.public.facebookContact
@@ -10,6 +11,9 @@ export function useStructuredData(data) {
   const email = runtimeConfig.public.email
   let { includeTypes = [], excludeTypes = [], article = {}, pageTdk = {}, faqList = [], breadcrumbList = [] } = data
   const structuredTypes = []
+
+  const currentIso = locales.value.find(l => l.code === locale.value)?.iso || locale.value
+  const homeUrl = `${domain}${getHomeUrl()}`
 
   const structuredData = {
     // 每页都要webpage
@@ -26,7 +30,7 @@ export function useStructuredData(data) {
         "url": `${pageTdk.url}`,
         "datePublished": `${pageTdk.datePublished || new Date().toISOString()}`,
         "dateModified": `${pageTdk.dateModified || new Date().toISOString()}`,
-        "inLanguage": `${pageTdk.lang || 'en-US'}`
+        "inLanguage": `${pageTdk.lang || currentIso ||'en-US'}`
       })
     },
     Organization: {
@@ -35,7 +39,7 @@ export function useStructuredData(data) {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": `${globalTitle}`,
-        "url": `${domain}`,
+        "url": `${homeUrl}`,
         "logo": `${domain}/logo.png`,
         "sameAs": [
           facebookContact,
@@ -62,7 +66,7 @@ export function useStructuredData(data) {
         "publisher": {
           "@type": "Organization",
           "name": `${globalTitle}`,
-          "url": `${domain}`,
+          "url": `${homeUrl}`,
           "logo": {
             "@type": "ImageObject",
             "url": `${domain}/logo.png`,
@@ -129,7 +133,7 @@ export function useStructuredData(data) {
         "@context": "https://schema.org",
         "@type": "ContactPage",
         "name": "Contact Us",
-        "url": `${domain}/contact`,
+        "url": `${domain}${getContactUrl()}`,
         "publisher": {
           "@type": "Organization",
           "name": `${globalTitle}`,
@@ -163,7 +167,7 @@ export function useStructuredData(data) {
   }
 
   // 动态控制结构化数据类型
-  if (pageTdk.url === `${domain}/`) {
+  if (pageTdk.url === `${homeUrl}`) {
     // 只有首页有website
     structuredData.WebSite = {
       type: 'application/ld+json',
@@ -171,16 +175,17 @@ export function useStructuredData(data) {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": `${globalTitle}`,
-        "url": `${domain}`,
-        "inLanguage": `${pageTdk.lang || 'en-US'}`,
+        "url": `${homeUrl}`,
+        "inLanguage": `${pageTdk.lang || currentIso || 'en-US'}`,
         "potentialAction": {
           "@type": "SearchAction",
-          "target": `${domain}/?s={search_term_string}`,
+          "target": `${homeUrl}/?s={search_term_string}`,
           "query-input": "required name=search_term_string"
         }
       })
     }
   }
+  // 删掉没有数据的结构化
   if (!Object.keys(article).length) {
     delete structuredData.NewsArticle
   }
@@ -201,5 +206,6 @@ export function useStructuredData(data) {
       }
     })
   }
+  console.log(structuredTypes.map(key => structuredData[key]))
   return structuredTypes.map(key => structuredData[key])
 }

@@ -20,6 +20,7 @@ import imgUrl from '@/assets/images/img1.jpg'
 const { useServerRequest, useClientRequest } = useRequest();
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute()
+const { t, locale } = useI18n()
 
 
 // 服务端渲染时会发起请求，初始化页面数据
@@ -41,7 +42,7 @@ const [{ data: findResult }, { data: articleList }] = await Promise.all([
 // 设置tdk
 const { title, description } = {}
 const url = `${runtimeConfig.public.domain}${route.path}`
-const pageTdk = { title, description, keywords: '', imgUrl: '', url, datePublished: '', dateModified: '' }
+const pageTdk = { title, description, keywords: '', imgUrl: '', url}
 useSeoMeta({
   ...useTdk(pageTdk)
 })
@@ -49,7 +50,7 @@ useHead({
   script: [...useStructuredData({ excludeTypes: ['ContactPage'], pageTdk })],
 })
 
-
+console.log(toRaw(locale.value))
 const douyinData = ref(null);
 async function getDouyin() {
   douyinData.value = await useClientRequest("/api/ttdownload/douyin/detail", {
