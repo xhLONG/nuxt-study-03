@@ -19,7 +19,7 @@
             <img src="@/assets/svgs/social/twitter.svg" alt="twitter" />
           </a>
           <a href="https://github.com" target="_blank" aria-label="GitHub" title="GitHub" rel="external">
-            <img src="@/assets/svgs/social/gitHub.svg" alt="gitHub" />
+            <img src="@/assets/svgs/social/github.svg" alt="gitHub" />
           </a>
         </div>
       </div>
@@ -110,7 +110,6 @@ const store = useIndexStore()
         justify-content: center;
         width: 32px;
         height: 32px;
-        background: #374151;
         border-radius: 50%;
         transition: background 0.3s;
 
