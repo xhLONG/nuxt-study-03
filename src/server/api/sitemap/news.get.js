@@ -1,7 +1,7 @@
 // /api/sitemap/news
 // 获取资讯列表url地址做sitemap
 import { decodeString } from '@/utils/tool';
-import { localeLangs, i18nConfig } from '~/nuxt-config/i18n.config.js';
+import { i18nConfig } from '~/nuxt-config/i18n.config.js';
 
 function newsHref(news, lang) {
   const prefix = lang === 'en' ? i18nConfig.pages.news[lang] : `/${lang}${i18nConfig.pages.news[lang]}`
