@@ -8,6 +8,7 @@
 const { locale, locales, t } = useI18n()
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute()
+const routeName = route.name.split('___')[0]
 
 const currentIso = computed(() => {
   const current = locales.value.find(l => l.code === locale.value)
@@ -22,6 +23,8 @@ const pageTdk = {
   datePublished: new Date().toISOString(),
   dateModified: new Date().toISOString()
 }
+const alternateLinksExcludeRoute = ['news-slug']
+const alternateLinks = alternateLinksExcludeRoute.includes(routeName) ? [] : [...useAlternateLinks(routeName)]
 
 // 设置默认tdk
 useSeoMeta({
@@ -36,6 +39,7 @@ useHead(() => ({
       name: 'language',
       content: currentIso.value
     }
-  ]
+  ],
+  link: alternateLinks
 }))
 </script>

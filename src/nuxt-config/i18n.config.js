@@ -5,6 +5,75 @@ const localeLangs = [
   { "code": "ko", "iso": "ko-KR", "name": "한국어", "flag": "kr", "file": "ko.json" }
 ]
 
+// 重写路由名称 路径要写ASCII字符，不然会被双重解码导致404。需要静态化的路由也要改写。打包生成的sitemap会自动改写路径url。
+const routeMap = {
+  news: {
+    en: '/news',
+    zh: '/zixun',
+    ms: '/berita',
+    ko: '/news'
+  },
+  'news-slug': {
+    en: '/news/[slug]',
+    zh: '/zixun/[slug]',
+    ms: '/berita/[slug]',
+    ko: '/news/[slug]'
+  },
+  about: {
+    en: '/about',
+    zh: '/guanyu',
+    ms: '/tentang',
+    ko: '/about'
+  },
+  // 招聘
+  careers: {
+    en: '/careers',
+    zh: '/zhaopin',
+    ms: '/kerjaya',
+    ko: '/careers'
+  },
+  contact: {
+    en: '/contact',
+    zh: '/lianxi',
+    ms: '/contact',
+    ko: '/contact' // 문의 = inquiry
+  },
+  // 商务合作
+  partnership: {
+    en: '/partnership',
+    zh: '/hezuo',
+    ms: '/kerjasama',
+    ko: '/partnership'
+  },
+  // 隐私条款
+  privacy: {
+    en: '/privacy-policy',
+    zh: '/yinsizhengce',
+    ms: '/dasar-privasi',
+    ko: '/privacy-policy'
+  },
+  profile: {
+    en: '/profile',
+    zh: '/gerenziliao',
+    ms: '/profile',
+    ko: '/profile'
+  },
+  // 服务条款
+  service: {
+    en: '/terms-of-service',
+    zh: '/fuwutiaokuan',
+    ms: '/terma-perkhidmatan',
+    ko: '/terms-of-service'
+  },
+  // 用户评价
+  testimonials: {
+    en: '/testimonials',
+    zh: '/yonghupingjia',
+    ms: '/testimonials',
+    ko: '/testimonials'
+  },
+}
+
 const i18nConfig = {
   locales: localeLangs,
   defaultLocale: 'en',
@@ -15,75 +84,9 @@ const i18nConfig = {
     useCookie: true,
     fallbackLocale: 'en'
   },
+  seo: true, // 自动添加 hreflang 链接
   customRoutes: 'config', // disable custom route with page components
-  // 重写路由名称 路径要写ASCII字符，不然会被双重解码导致404。需要静态化的路由也要改写。打包生成的sitemap会自动改写路径url。
-  pages: {
-    news: {
-      en: '/news',
-      zh: '/zixun',
-      ms: '/berita',
-      ko: '/news'
-    },
-    'news-slug': {
-      en: '/news/[slug]',
-      zh: '/zixun/[slug]',
-      ms: '/berita/[slug]',
-      ko: '/news/[slug]'
-    },
-    about: {
-      en: '/about',
-      zh: '/guanyu',
-      ms: '/tentang',
-      ko: '/about'
-    },
-    // 招聘
-    careers: {
-      en: '/careers',
-      zh: '/zhaopin',
-      ms: '/kerjaya',
-      ko: '/careers'
-    },
-    contact: {
-      en: '/contact',
-      zh: '/lianxi',
-      ms: '/contact',
-      ko: '/contact' // 문의 = inquiry
-    },
-    // 商务合作
-    partnership: {
-      en: '/partnership',
-      zh: '/hezuo',
-      ms: '/kerjasama',
-      ko: '/partnership'
-    },
-    // 隐私条款
-    privacy: {
-      en: '/privacy-policy',
-      zh: '/yinsizhengce',
-      ms: '/dasar-privasi',
-      ko: '/privacy-policy'
-    },
-    profile: {
-      en: '/profile',
-      zh: '/gerenziliao',
-      ms: '/profile',
-      ko: '/profile'
-    },
-    // 服务条款
-    service: {
-      en: '/terms-of-service',
-      zh: '/fuwutiaokuan',
-      ms: '/terma-perkhidmatan',
-      ko: '/terms-of-service'
-    },
-    // 用户评价
-    testimonials: {
-      en: '/testimonials',
-      zh: '/yonghupingjia',
-      ms: '/testimonials',
-      ko: '/testimonials'
-    },
-  }
+  pages: routeMap
 }
 
 
@@ -94,5 +97,6 @@ const i18nConfig = {
 
 export {
   localeLangs,
+  routeMap,
   i18nConfig
 }

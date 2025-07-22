@@ -2,32 +2,68 @@
 export function usePageUrl() {
   const localePath = useLocalePath()
 
-  /**
-   * 获取资讯详情页的本地化链接
-   * @param news - 文章 {slug:　＂＂, id:　２}
-   * @returns {string} - 生成的本地化路径
-   */
-  function getArticleUrl(news) {
-    const slug = `${news.slug}-${news.id}`
-    return localePath({ name: 'news-slug', params: { slug } })
-  }
-  // 资讯页的本地化链接
-  function getNewsUrl() {
-    return localePath({ name: 'news'})
-  }
-  // 首页的本地化链接
-  function getHomeUrl() {
-    return localePath({ path: '/'})
-  }
-  // 联系页的本地化链接
-  function getContactUrl() {
-    return localePath({ path: 'contact'})
+  const urls = {
+    // 资讯详情页
+    newsDetailUrl(news, locale) {
+      const slug = `${news.slug}-${news.id}`
+      return localePath({ name: 'news-slug', params: { slug } }, locale)
+    },
+
+    // 资讯页
+    newsUrl(locale) {
+      return localePath({ name: 'news' }, locale)
+    },
+
+    // 首页
+    indexUrl(locale) {
+      return localePath({ name: 'index' }, locale)
+    },
+
+    // 联系页
+    contactUrl(locale) {
+      return localePath({ path: 'contact' }, locale)
+    },
+
+    // 关于页
+    aboutUrl(locale) {
+      return localePath({ name: 'about' }, locale)
+    },
+
+    // 招聘页
+    careersUrl(locale) {
+      return localePath({ name: 'careers' }, locale)
+    },
+
+    // faq页
+    faqUrl(locale) {
+      return localePath({ name: 'faq' }, locale)
+    },
+
+    // 合作页
+    partnershipUrl(locale) {
+      return localePath({ name: 'partnership' }, locale)
+    },
+
+    // 隐私页
+    privacyUrl(locale) {
+      return localePath({ name: 'privacy' }, locale)
+    },
+
+    // 个人页
+    profileUrl(locale) {
+      return localePath({ name: 'profile' }, locale)
+    },
+
+    // 服务页
+    serviceUrl(locale) {
+      return localePath({ name: 'service' }, locale)
+    },
+
+    // 用户评价页
+    testimonialsUrl(locale) {
+      return localePath({ name: 'testimonials' }, locale)
+    }
   }
 
-  return {
-    getArticleUrl,
-    getNewsUrl,
-    getHomeUrl,
-    getContactUrl
-  }
+  return urls
 }

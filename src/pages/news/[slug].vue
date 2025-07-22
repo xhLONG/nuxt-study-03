@@ -13,11 +13,12 @@ import { newsFaq } from '@/page-config/faq';
 const { useServerRequest, useClientRequest } = useRequest();
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute()
-const { getNewsUrl, getHomeUrl } = usePageUrl()
+const { newsUrl, indexUrl } = usePageUrl()
 const { t, locale } = useI18n()
 
 const id = route.params.slug.slice(route.params.slug.lastIndexOf('-')+1)
 console.log('-------->', id)
+console.log('-------->', toRaw(route))
 
 
 // 服务端渲染时会发起请求，初始化页面数据
@@ -36,10 +37,10 @@ const simpleArticle = { title, description, datePublished: news.value.date, date
 const pageTdk = { title: title+' | '+runtimeConfig.public.globalTitle, description, keywords: '', imgUrl, url, datePublished: news.value.date, dateModified: news.value.modified }
 const breadcrumbList = [{
   name: t('base.home'),
-  url: getHomeUrl(),
+  url: indexUrl(),
 }, {
   name: t('base.news'),
-  url: getNewsUrl(),
+  url: newsUrl(),
 }, {
   name: title,
   url

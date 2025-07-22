@@ -2,7 +2,7 @@
 export function useStructuredData(data) {
   const runtimeConfig = useRuntimeConfig()
   const { locale, locales } = useI18n()
-  const { getHomeUrl,getContactUrl } = usePageUrl()
+  const { indexUrl,contactUrl } = usePageUrl()
   const domain = runtimeConfig.public.domain
   const globalTitle = runtimeConfig.public.globalTitle
   const facebookContact = runtimeConfig.public.facebookContact
@@ -13,7 +13,7 @@ export function useStructuredData(data) {
   const structuredTypes = []
 
   const currentIso = locales.value.find(l => l.code === locale.value)?.iso || locale.value
-  const homeUrl = `${domain}${getHomeUrl()}`
+  const homeUrl = `${domain}${indexUrl()}`
 
   const structuredData = {
     // 每页都要webpage
@@ -133,7 +133,7 @@ export function useStructuredData(data) {
         "@context": "https://schema.org",
         "@type": "ContactPage",
         "name": "Contact Us",
-        "url": `${domain}${getContactUrl()}`,
+        "url": `${domain}${contactUrl()}`,
         "publisher": {
           "@type": "Organization",
           "name": `${globalTitle}`,
@@ -206,6 +206,5 @@ export function useStructuredData(data) {
       }
     })
   }
-  console.log(structuredTypes.map(key => structuredData[key]))
   return structuredTypes.map(key => structuredData[key])
 }

@@ -13,14 +13,14 @@
     <BaseModuleSection title="文章列表2" :titleLevel="2">
       <ul class="news-list">
         <li v-for="item in articleList" :key="item.id">
-          <NuxtLink :to="getArticleUrl(item)" target="_blank">{{ item.title.rendered }}</NuxtLink>
+          <NuxtLink :to="newsDetailUrl(item)" target="_blank">{{ item.title.rendered }}</NuxtLink>
         </li>
       </ul>
     </BaseModuleSection>
     <BaseModuleSection title="热门文章" :titleLevel="2">
       <ul class="news-list">
         <li v-for="item in hotArticleList" :key="item.id">
-          <NuxtLink :to="getArticleUrl(item)" target="_blank">{{ item.title }}</NuxtLink>
+          <NuxtLink :to="newsDetailUrl(item)" target="_blank">{{ item.title }}</NuxtLink>
         </li>
       </ul>
     </BaseModuleSection>
@@ -39,7 +39,7 @@ const { trackEvent } = useGa4()
 const { useServerRequest, useClientRequest } = useRequest();
 const runtimeConfig = useRuntimeConfig();
 const route = useRoute()
-const { getArticleUrl, getHomeUrl } = usePageUrl()
+const { newsDetailUrl, indexUrl } = usePageUrl()
 const { t, locale } = useI18n()
 
 
@@ -67,7 +67,7 @@ const url = `${runtimeConfig.public.domain}${route.path}`
 const pageTdk = { title, description, keywords: '', imgUrl: '', url, datePublished: '', dateModified: '' }
 const breadcrumbList = [{
   name: t('base.home'),
-  url: getHomeUrl(),
+  url: indexUrl(),
 }, {
   name: t('base.news'),
   url,
