@@ -27,12 +27,15 @@ export default defineNuxtConfig({
   experimental: {
     inlineSSRStyles: false
   },
-  css: ['@/assets/style/main.scss', 'flag-icons/css/flag-icons.min.css'],
+  css: ['@/assets/style/main.scss'],
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "@/assets/style/var.scss" as *;'
+          additionalData: `
+          @use "@/assets/style/var.scss" as *;
+          @use "@/assets/style/custom-flag-icons.scss" as *;
+          `
         }
       }
     },
